@@ -1,0 +1,33 @@
+<lib-toastify-toast-container [autoClose]="disableAutoClose? 0 : autoClose" [hideProgressBar]="hideProgress"
+  [newestOnTop]="newestOnTop" [closeOnClick]="closeOnClick" [pauseOnHover]="pauseDelayHover"
+  [pauseOnVisibilityChange]="pauseVisibilityChange" [preventDuplicates]="preventDuplicates">
+</lib-toastify-toast-container>
+
+<input class="buscar" type="text" (input)="onSearch($event)" placeholder="Buscar Livro">
+
+<div class="conteudo">
+  <button mat-fab extended color="primary" (click)="openDialog()">
+    <mat-icon><span class="material-symbols-outlined">
+        add
+      </span></mat-icon>
+    Add Livro
+  </button>
+  <div *ngFor="let livro of filtroLivros">
+    <mat-card class="livro">
+      <div class="detalhes">
+        <mat-card-content>Nome Do Livro: <strong>{{livro.titulo}}</strong></mat-card-content>
+        <mat-card-content>Genero: <strong>{{livro.genero.nome}}</strong></mat-card-content>
+        <mat-card-content>Valor: <strong>R${{livro.valor}}</strong></mat-card-content>
+        <mat-card-content>Quantidade na Loja: <strong>{{livro.qtd}} unidades</strong></mat-card-content>
+      </div>
+      <div class="acoes">
+        <button mat-mini-fab color="primary" (click)="openDialog(livro)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-mini-fab color="warn" (click)="confirmarDelete(livro.id_livro)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Novo Livro</h1>
+<mat-dialog-content class="mat-typography">
+  <input type="text" placeholder="Nome do Livro">
+  <select matNativeControl required [formControl]="selectFormControl">
+    <option label="--select something --"></option>
+
+    <option value="saab">Saab</option>
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+  </select>
+  @if (selectFormControl.hasError('required')) {
+  <mat-error>This field is required</mat-error>
+  }
+  <input type="text" placeholder="Nome do Livro">
+  <input type="text" placeholder="Nome do Livro">
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+</mat-dialog-actions>
